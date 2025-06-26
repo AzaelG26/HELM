@@ -46,6 +46,16 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 
-
+    
+    @IBAction func goToRegister(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "registerId")  {
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
+        else {
+            print("no se pudo cargar el register")
+        }
+    }
+    
 }
 
