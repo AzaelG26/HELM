@@ -42,6 +42,15 @@ class LoginViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    // Para no rotar el login
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    override var shouldAutorotate: Bool{
+        return false
+    }
+    //
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -49,8 +58,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func goToRegister(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(identifier: "registerId")  {
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
         else {
             print("no se pudo cargar el register")

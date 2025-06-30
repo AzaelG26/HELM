@@ -60,12 +60,22 @@ class RegisterViewController: UIViewController {
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
                 view.addGestureRecognizer(tapGesture)
     }
+    
+    // Para no rotar el login
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    override var shouldAutorotate: Bool{
+        return false
+    }
+    //
+    
     @objc func dismissKeyboard() {
        view.endEditing(true)
    }
     
     @IBAction func goToLogin(_ sender: Any) {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }
